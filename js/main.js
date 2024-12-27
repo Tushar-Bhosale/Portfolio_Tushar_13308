@@ -89,6 +89,74 @@ const srRight = ScrollReveal({
 srRight.reveal('.skills-box',{delay: 100})
 srRight.reveal('.form-control',{delay: 100})
 
+// ----------validations------------
+
+function validateForm(event) {
+  event.preventDefault();
+
+  let isValid = true;
+
+  const name = document.getElementById("name");
+  const email = document.getElementById("email");
+  const message = document.getElementById("message");
+
+  const nameError = document.getElementById("nameError");
+  const emailError = document.getElementById("emailError");
+  const messageError = document.getElementById("messageError");
+
+  const namePattern = /^[A-Za-z\s]+$/;
+  if (!namePattern.test(name.value)) {
+      name.style.border = "2px solid red";
+      nameError.textContent = "Name must contain only letters.";
+      isValid = false;
+  } else {
+      name.style.border = "";
+      nameError.textContent = "";
+  }
+
+  const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  if (!emailPattern.test(email.value)) {
+      email.style.border = "2px solid red";
+      emailError.textContent = "Please enter a valid email address.";
+      isValid = false;
+  } else {
+      email.style.border = "";
+      emailError.textContent = "";
+  }
+
+  if (message.value.length < 05) {
+      message.style.border = "2px solid red";
+      messageError.textContent = "Message must be at least 05 characters long.";
+      isValid = false;
+  } else {
+      message.style.border = "";
+      messageError.textContent = "";
+  }
+
+  if (isValid) {
+    name.value = "";
+    email.value = "";
+    message.value = "";
+
+    // Reset styles and error messages
+    name.style.border = "";
+    email.style.border = "";
+    message.style.border = "";
+    nameError.textContent = "";
+    emailError.textContent = "";
+    messageError.textContent = "";
+
+    // Display success message
+    successMessage.textContent = "Form submitted successfully!";
+    successMessage.style.display = "block";
+
+    setTimeout(() => {
+        successMessage.style.display = "none";
+    }, 10000);
+  }
+}
+
+
 /* ----- CHANGE ACTIVE LINK ----- */
 
 const sections = document.querySelectorAll('section[id]')

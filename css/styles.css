@@ -525,6 +525,13 @@ h4 {
     font-size: 18px;
 }
 
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    display: block;
+}
+
 .contact-info::after {
     background: var(--color-white);
 }
@@ -551,7 +558,7 @@ h4 {
 }
 
 .input-field {
-    width: 50%;
+    width: 100%;
     height: 55px;
     background: transparent;
     border: 2px solid #AAA;
@@ -560,9 +567,16 @@ h4 {
     outline: none;
 }
 
+.success-message {
+    color: green;
+    font-weight: bold;
+    margin-top: 10px;
+    display: inline-block;
+}
+
 textarea {
     width: 100%;
-    height: 250px;
+    height: 240px;
     background: transparent;
     border: 2px solid #AAA;
     border-radius: 10px;
